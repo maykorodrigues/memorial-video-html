@@ -6,11 +6,11 @@
 <title>Marlene Rodrigues da Conceição — In Memoriam</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@300;400;600&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-html,body{width:100%;height:100%;overflow:hidden;background:#000;color:#F5F0E6}
+html,body{width:100%;height:100%;overflow:hidden;background:#0A0907;color:#F5EFE3}
 
 /* ── Grain de filme ── */
 body::after{
@@ -25,7 +25,7 @@ body::after{
 
 .slide{
   position:absolute;inset:0;
-  opacity:0;transition:opacity 2.4s cubic-bezier(.4,0,.2,1);
+  opacity:0;transition:opacity 1.6s cubic-bezier(.4,0,.2,1);
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
 }
@@ -39,8 +39,8 @@ body::after{
   will-change:transform;
 }
 .bg.grayscale{filter:grayscale(1) contrast(1.08) brightness(.8)}
-.bg.blur-heavy{filter:blur(14px) brightness(.45);transform:scale(1.08)}
-.bg.dark-veil {filter:brightness(.28)}
+.bg.blur-heavy{filter:blur(14px) brightness(.42);transform:scale(1.08)}
+.bg.dark-veil {filter:brightness(.24)}
 
 /* ── Vídeo Veo de fundo ── */
 .bg-video{position:absolute;inset:0;overflow:hidden}
@@ -53,12 +53,12 @@ body::after{
 }
 .bg-video.grayscale video{filter:grayscale(1) contrast(1.08) brightness(.8)}
 
-/* ── Ken Burns ── */
-@keyframes kb-zoom   {from{transform:scale(1)}                              to{transform:scale(1.12)}}
-@keyframes kb-face   {from{transform:scale(1)   translate(0,0)}             to{transform:scale(1.55) translate(-3%,-6%)}}
-@keyframes kb-hands  {from{transform:scale(1)   translate(0,0)}             to{transform:scale(1.6)  translate(0,14%)}}
-@keyframes kb-left   {from{transform:scale(1)   translate(0,0)}             to{transform:scale(1.15) translate(-4%,0)}}
-@keyframes kb-right  {from{transform:scale(1)   translate(0,0)}             to{transform:scale(1.15) translate(4%,0)}}
+/* ── Ken Burns — escalas calibradas ── */
+@keyframes kb-zoom   {from{transform:scale(1)}                              to{transform:scale(1.06)}}
+@keyframes kb-face   {from{transform:scale(1)   translate(0,0)}             to{transform:scale(1.30) translate(-2%,-4%)}}
+@keyframes kb-hands  {from{transform:scale(1)   translate(0,0)}             to{transform:scale(1.28) translate(0,10%)}}
+@keyframes kb-left   {from{transform:scale(1)   translate(0,0)}             to{transform:scale(1.12) translate(-4%,0)}}
+@keyframes kb-right  {from{transform:scale(1)   translate(0,0)}             to{transform:scale(1.12) translate(4%,0)}}
 .slide.active .bg.kb      {animation:kb-zoom  24s ease-out both}
 .slide.active .bg.kb-face {animation:kb-face  30s ease-out both}
 .slide.active .bg.kb-hands{animation:kb-hands 30s ease-out both}
@@ -83,57 +83,50 @@ body::after{
 
 /* ── Camada de texto ── */
 .tl{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7vw 8vw;text-align:center}
-.tl-bot{position:absolute;bottom:72px;left:50%;transform:translateX(-50%);z-index:10;text-align:center;width:82%}
+.tl-bot{position:absolute;bottom:72px;left:50%;transform:translateX(-50%);z-index:10;text-align:center;max-width:min(560px,78%);width:auto}
+.tl-bot-left{position:absolute;bottom:72px;left:8vw;z-index:10;text-align:left;max-width:min(540px,68%)}
 .tl-top{position:absolute;top:64px;left:50%;transform:translateX(-50%);z-index:10;text-align:center;width:70%}
-.tl-left{position:absolute;bottom:72px;left:52px;z-index:10;text-align:left;max-width:44%}
-
-/* Glass backdrop para legibilidade */
-.glass{
-  background:rgba(0,0,0,.38);
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  padding:18px 28px;border-radius:4px;
-  border:1px solid rgba(212,168,87,.15);
-}
 
 /* ── Animações de entrada ── */
-@keyframes fade-up  {from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fade-in  {from{opacity:0}                             to{opacity:1}}
-@keyframes scale-in {from{opacity:0;transform:scale(.92)}        to{opacity:1;transform:scale(1)}}
-@keyframes expand   {from{width:0}                               to{width:100%}}
+@keyframes fade-up  {from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fade-in  {from{opacity:0}                           to{opacity:1}}
+@keyframes scale-in {from{opacity:0;transform:scale(.97)}     to{opacity:1;transform:scale(1)}}
+@keyframes expand   {from{width:0}                             to{width:100%}}
 @keyframes pulse-gold{0%,100%{opacity:.5}50%{opacity:1}}
 
 .appear,.appear-2,.appear-3,.appear-4{opacity:0}
-.running .appear  {animation:fade-up 2s          ease forwards}
-.running .appear-2{animation:fade-up 2s  1.0s    ease forwards}
-.running .appear-3{animation:fade-up 2s  2.0s    ease forwards}
-.running .appear-4{animation:fade-up 2s  3.0s    ease forwards}
-.running .appear-scale{animation:scale-in 2.2s   ease forwards}
-.running .appear-slow {animation:fade-in  3.5s 0.8s ease forwards;opacity:0}
+.running .appear  {animation:fade-up 2s        cubic-bezier(.4,0,.2,1) forwards}
+.running .appear-2{animation:fade-up 2s  1.0s  cubic-bezier(.4,0,.2,1) forwards}
+.running .appear-3{animation:fade-up 2s  2.0s  cubic-bezier(.4,0,.2,1) forwards}
+.running .appear-4{animation:fade-up 2s  3.0s  cubic-bezier(.4,0,.2,1) forwards}
+.running .appear-scale{animation:scale-in 2.2s cubic-bezier(.4,0,.2,1) forwards}
+.running .appear-slow {animation:fade-in  3.5s 0.8s cubic-bezier(.4,0,.2,1) forwards;opacity:0}
 
 /* ── Linha divisora dourada ── */
 .gold-line{
-  display:block;height:1px;background:linear-gradient(90deg,transparent,#D4A857,transparent);
+  display:block;height:1px;background:linear-gradient(90deg,transparent,#C9A961,transparent);
   margin:16px auto;opacity:0;
 }
-.running .gold-line{animation:expand 1.8s .5s ease forwards,fade-in 1.8s .5s ease forwards}
+.running .gold-line{animation:expand 1.8s .5s cubic-bezier(.4,0,.2,1) forwards,fade-in 1.8s .5s ease forwards}
 
 /* ── Tipografia ── */
 .t-chapter-ato{
   font-family:'Cinzel',Georgia,serif;
   font-size:clamp(11px,1.1vw,16px);font-weight:400;
-  color:rgba(212,168,87,.7);letter-spacing:.38em;text-transform:uppercase;
+  color:rgba(201,169,97,.7);letter-spacing:.38em;text-transform:uppercase;
   margin-bottom:10px;
 }
 .t-chapter-title{
   font-family:'Cinzel',Georgia,serif;
   font-size:clamp(16px,2.2vw,32px);font-weight:600;
-  color:rgba(245,240,230,.55);letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(245,239,227,.55);letter-spacing:.22em;text-transform:uppercase;
+  line-height:1.3;
 }
 .t-name{
   font-family:'Cormorant Garamond',Georgia,serif;
   font-size:clamp(60px,9.5vw,140px);font-weight:600;font-style:italic;
-  color:#F5F0E6;letter-spacing:.12em;line-height:1;
-  text-shadow:0 2px 40px rgba(0,0,0,.9),0 0 80px rgba(212,168,87,.18);
+  color:#F5EFE3;letter-spacing:.07em;line-height:1;
+  text-shadow:0 2px 40px rgba(0,0,0,.9),0 0 80px rgba(201,169,97,.18);
 }
 .t-sobrenome{
   font-family:'Cormorant Garamond',Georgia,serif;
@@ -143,49 +136,44 @@ body::after{
 .t-dates{
   font-family:'Cinzel',Georgia,serif;
   font-size:clamp(12px,1.5vw,22px);font-weight:400;
-  color:#D4A857;letter-spacing:.14em;margin-top:4px;
+  color:#C9A961;letter-spacing:.14em;margin-top:4px;
 }
 .t-memoriam{
   font-family:'Cinzel',Georgia,serif;
   font-size:clamp(11px,1.2vw,18px);font-weight:400;
-  color:rgba(212,168,87,.65);letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(201,169,97,.65);letter-spacing:.3em;text-transform:uppercase;
 }
 .t-memoriam-name{
   font-family:'Cormorant Garamond',Georgia,serif;
   font-size:clamp(24px,3.2vw,52px);font-weight:600;font-style:italic;
-  color:#F5F0E6;letter-spacing:.07em;
+  color:#F5EFE3;letter-spacing:.07em;
   text-shadow:0 2px 24px rgba(0,0,0,.95);
 }
-.t-narrativa{
-  font-family:'EB Garamond','Cormorant Garamond',Georgia,serif;
-  font-size:clamp(14px,1.6vw,24px);font-weight:400;font-style:italic;
-  color:rgba(245,240,230,.9);letter-spacing:.03em;line-height:1.7;
+/* Passagem bíblica — Lora itálico */
+.t-biblical{
+  font-family:'Lora',Georgia,serif;
+  font-size:clamp(14px,1.75vw,28px);font-weight:400;font-style:italic;
+  color:#F5EFE3;line-height:1.85;letter-spacing:.01em;
+  text-shadow:0 1px 12px rgba(0,0,0,.9),0 2px 28px rgba(0,0,0,.65);
 }
-.t-quote{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:clamp(14px,1.7vw,26px);font-weight:400;font-style:italic;
-  color:#EAD9B5;line-height:1.75;letter-spacing:.02em;
-}
-.t-attribution{
+/* Referência bíblica — Cinzel 300, 60% opacidade */
+.t-ref{
   font-family:'Cinzel',Georgia,serif;
-  font-size:clamp(9px,0.9vw,14px);font-weight:400;
-  color:rgba(212,168,87,.6);letter-spacing:.14em;margin-top:8px;text-transform:uppercase;
+  font-size:clamp(9px,0.85vw,13px);font-weight:300;
+  color:rgba(245,239,227,.6);letter-spacing:.22em;
+  margin-top:14px;display:block;
 }
+/* Frase pessoal dela — intocada */
 .t-frase{
   font-family:'Cormorant Garamond',Georgia,serif;
   font-size:clamp(26px,3.8vw,60px);font-weight:600;font-style:italic;
-  color:#F5F0E6;text-align:center;line-height:1.4;
+  color:#F5EFE3;text-align:center;line-height:1.4;
   text-shadow:0 2px 28px rgba(0,0,0,.9);
-}
-.t-honrar{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:clamp(18px,2.4vw,38px);font-weight:300;font-style:italic;
-  color:#F5F0E6;text-align:center;line-height:1.6;
 }
 .t-dedicatoria{
   font-family:'Cormorant Garamond',Georgia,serif;
   font-size:clamp(14px,1.7vw,26px);font-weight:300;font-style:italic;
-  color:rgba(245,240,230,.85);letter-spacing:.04em;margin-top:16px;
+  color:rgba(245,239,227,.85);letter-spacing:.04em;margin-top:16px;
 }
 
 /* ── Ornamentos SVG ── */
@@ -196,28 +184,12 @@ body::after{
 .orn-tr{top:28px;right:28px;transform:scaleX(-1)}
 .orn-tc{top:20px;left:50%;transform:translateX(-50%)}
 .orn-bc{bottom:20px;left:50%;transform:translateX(-50%)}
-.running .orn{animation:fade-in 3s 0.8s ease forwards}
-
-/* ── Player de vídeo ── */
-#video-player{
-  position:fixed;inset:0;z-index:600;background:#000;
-  display:none;flex-direction:column;align-items:center;justify-content:center;
-}
-#video-player video{
-  width:100%;height:100%;object-fit:contain;
-}
-#video-player .vp-close{
-  position:absolute;top:20px;right:24px;z-index:10;cursor:pointer;
-  font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(245,240,230,.35);border:1px solid rgba(245,240,230,.15);
-  padding:8px 16px;border-radius:2px;transition:all .3s;background:rgba(0,0,0,.5);
-}
-#video-player .vp-close:hover{color:#F5F0E6;border-color:rgba(245,240,230,.4)}
+.running .orn{animation:fade-in 3s 0.8s cubic-bezier(.4,0,.2,1) forwards}
 
 /* ── Tela de início ── */
 #start{
   position:fixed;inset:0;
-  background:#000;
+  background:#0A0907;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   z-index:800;transition:opacity 2.5s ease;
 }
@@ -232,71 +204,96 @@ body::after{
 #start-content{position:relative;z-index:2;text-align:center;padding:0 40px}
 #start h1{
   font-family:'Cinzel',Georgia,serif;
-  font-weight:600;color:#F5F0E6;
+  font-weight:400;
   font-size:clamp(14px,1.6vw,22px);letter-spacing:.38em;
-  text-transform:uppercase;color:rgba(212,168,87,.8);
-  animation:fade-up 2.5s ease both;margin-bottom:22px;
+  text-transform:uppercase;color:rgba(201,169,97,.8);
+  animation:fade-up 2.5s cubic-bezier(.4,0,.2,1) both;margin-bottom:22px;
 }
 #start h2{
   font-family:'Cormorant Garamond',Georgia,serif;
-  font-weight:600;font-style:italic;color:#F5F0E6;
-  font-size:clamp(40px,7vw,96px);letter-spacing:.12em;
-  animation:fade-up 2.5s .4s ease both;
+  font-weight:600;font-style:italic;color:#F5EFE3;
+  font-size:clamp(40px,7vw,96px);letter-spacing:.09em;
+  animation:fade-up 2.5s .4s cubic-bezier(.4,0,.2,1) both;
   text-shadow:0 2px 40px rgba(0,0,0,.8);
 }
 #start .sub{
-  font-family:'Cinzel',Georgia,serif;font-weight:400;
-  color:rgba(245,240,230,.4);font-size:clamp(10px,1.1vw,16px);
+  font-family:'Cinzel',Georgia,serif;font-weight:300;
+  color:rgba(245,239,227,.4);font-size:clamp(10px,1.1vw,16px);
   letter-spacing:.18em;margin-top:14px;text-transform:uppercase;
-  animation:fade-up 2.5s .8s ease both;
+  animation:fade-up 2.5s .8s cubic-bezier(.4,0,.2,1) both;
 }
-#start .btns{
-  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
-  margin-top:48px;
-  animation:fade-up 2.5s 1.4s ease both;
+.start-btns{
+  display:flex;gap:16px;margin-top:52px;flex-wrap:wrap;justify-content:center;
+  animation:fade-up 2.5s 1.3s cubic-bezier(.4,0,.2,1) both;
 }
-.start-btn{
-  font-family:'Cinzel',serif;font-size:10px;font-weight:600;
-  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;
-  padding:12px 28px;border-radius:2px;border:none;
-  transition:all .3s ease;
+.btn-start{
+  font-family:'Cinzel',Georgia,serif;font-weight:400;font-size:clamp(10px,.95vw,13px);
+  letter-spacing:.16em;text-transform:uppercase;
+  background:none;border:1px solid rgba(201,169,97,.4);
+  color:rgba(201,169,97,.75);padding:13px 30px;cursor:pointer;
+  transition:border-color .3s ease, color .3s ease;
 }
-.start-btn-primary{
-  background:rgba(212,168,87,.14);color:#D4A857;
-  border:1px solid rgba(212,168,87,.38);
-}
-.start-btn-primary:hover{background:rgba(212,168,87,.26);border-color:#D4A857}
-.start-btn-secondary{
-  background:transparent;color:rgba(245,240,230,.38);
-  border:1px solid rgba(245,240,230,.15);
-}
-.start-btn-secondary:hover{color:#F5F0E6;border-color:rgba(245,240,230,.38)}
+.btn-start:hover{border-color:rgba(201,169,97,.85);color:#C9A961}
+.btn-video{border-color:rgba(245,239,227,.18);color:rgba(245,239,227,.45)}
+.btn-video:hover{border-color:rgba(245,239,227,.5);color:rgba(245,239,227,.8)}
 #start .divider{
   width:120px;height:1px;
-  background:linear-gradient(90deg,transparent,#D4A857,transparent);
+  background:linear-gradient(90deg,transparent,#C9A961,transparent);
   margin:18px auto;opacity:.5;
   animation:fade-in 2.5s 1s ease both;
 }
 
+/* ── Player de vídeo ── */
+#video-player{
+  position:fixed;inset:0;background:#000;z-index:810;
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+}
+#video-player video{max-width:100%;max-height:100%;outline:none}
+.vp-close{
+  position:absolute;top:20px;right:24px;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;
+  color:rgba(201,169,97,.55);cursor:pointer;z-index:2;
+  text-transform:uppercase;transition:color .2s ease;
+}
+.vp-close:hover{color:#C9A961}
+
 /* ── Barra de progresso ── */
 #bar-track{position:fixed;bottom:0;left:0;right:0;height:2px;background:rgba(255,255,255,.04);z-index:100}
-#bar{height:100%;background:linear-gradient(90deg,rgba(212,168,87,.4),#D4A857);width:0;transition:width .3s linear}
+#bar{height:100%;background:linear-gradient(90deg,rgba(201,169,97,.4),#C9A961);width:0;transition:width .3s linear}
 .chapter-dot{
   position:absolute;top:50%;transform:translateY(-50%);
-  width:5px;height:5px;border-radius:50%;background:#D4A857;opacity:.45;
+  width:5px;height:5px;border-radius:50%;background:#C9A961;opacity:.45;
 }
 
 /* ── Carregando ── */
 #loader{
-  position:fixed;inset:0;background:#000;z-index:700;
+  position:fixed;inset:0;background:#0A0907;z-index:700;
   display:flex;align-items:center;justify-content:center;
   transition:opacity 1.5s ease;
 }
 #loader.hide{opacity:0;pointer-events:none}
 #loader span{
   font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;
-  color:rgba(212,168,87,.5);text-transform:uppercase;
+  color:rgba(201,169,97,.5);text-transform:uppercase;
   animation:pulse-gold 1.6s ease infinite;
+}
+
+/* ── Acessibilidade ── */
+@media (prefers-reduced-motion: reduce) {
+  .slide.active .bg.kb,
+  .slide.active .bg.kb-face,
+  .slide.active .bg.kb-hands,
+  .slide.active .bg.kb-left,
+  .slide.active .bg.kb-right { animation: none }
+  .running .appear,
+  .running .appear-2,
+  .running .appear-3,
+  .running .appear-4,
+  .running .appear-scale,
+  .running .appear-slow,
+  .running .gold-line,
+  .running .orn { animation: fade-in 1s ease forwards }
+  .slide { transition-duration: .8s }
 }
 </style>
 </head>
@@ -304,14 +301,6 @@ body::after{
 
 <!-- Carregando -->
 <div id="loader"><span>carregando</span></div>
-
-<!-- Player de vídeo -->
-<div id="video-player">
-  <div class="vp-close" onclick="fecharVideo()">&#10005; &nbsp;fechar</div>
-  <video id="vid" controls preload="none">
-    <source src="montagem/homenagem_marlene_v03_720p.mp4" type="video/mp4">
-  </video>
-</div>
 
 <!-- Tela de início -->
 <div id="start">
@@ -321,11 +310,19 @@ body::after{
     <h2>Marlene</h2>
     <div class="divider"></div>
     <div class="sub">Rodrigues da Conceição &nbsp;·&nbsp; 1955 – 2025</div>
-    <div class="btns">
-      <button class="start-btn start-btn-primary" onclick="iniciar()">Apresentação interativa</button>
-      <button class="start-btn start-btn-secondary" onclick="assistirVideo()">Assistir o vídeo</button>
+    <div class="start-btns">
+      <button class="btn-start" onclick="iniciar()">Apresentação interativa</button>
+      <button class="btn-start btn-video" onclick="assistirVideo()">Assistir o vídeo</button>
     </div>
   </div>
+</div>
+
+<!-- Player de vídeo -->
+<div id="video-player">
+  <div class="vp-close" onclick="fecharVideo()">✕ fechar</div>
+  <video id="vid" controls preload="none">
+    <source src="montagem/homenagem_marlene_v03_720p.mp4" type="video/mp4">
+  </video>
 </div>
 
 <!-- Palco -->
@@ -339,123 +336,79 @@ body::after{
 
 <script>
 // ══════════════════════════════════════════════════════════════════════════════
-// SVG ORNAMENTOS
+// SVG ORNAMENTOS — opacidade 0.18, cor #C9A961
 // ══════════════════════════════════════════════════════════════════════════════
 
 const SVG_RAMO = `<svg width="80" height="140" viewBox="0 0 80 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M8 134 C10 112 22 94 30 76 C38 58 52 40 64 18" stroke="#D4A857" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-  <path d="M8 134 C14 128 22 122 16 116" stroke="#D4A857" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".6"/>
-  <!-- folha 1 -->
-  <path d="M20 110 C8 100 2 86 16 80 C26 88 28 104 20 110Z" fill="#D4A857" opacity=".50"/>
-  <path d="M20 110 C16 100 14 90 16 80" stroke="#D4A857" stroke-width=".7" fill="none" opacity=".40"/>
-  <!-- folha 2 -->
-  <path d="M32 86 C20 78 16 64 30 58 C40 66 40 80 32 86Z" fill="#D4A857" opacity=".44"/>
-  <path d="M32 86 C28 76 26 66 30 58" stroke="#D4A857" stroke-width=".7" fill="none" opacity=".35"/>
-  <!-- folha 3 -->
-  <path d="M46 60 C38 50 36 38 50 34 C58 42 56 56 46 60Z" fill="#D4A857" opacity=".40"/>
-  <!-- folha 4 menor -->
-  <path d="M57 38 C52 30 54 22 62 20 C66 28 62 36 57 38Z" fill="#D4A857" opacity=".34"/>
-  <!-- rama lateral -->
-  <path d="M40 72 C46 68 54 70 58 62" stroke="#D4A857" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".50"/>
-  <path d="M58 62 C62 56 60 50 64 46" stroke="#D4A857" stroke-width=".8" fill="none" stroke-linecap="round" opacity=".40"/>
-  <!-- broto top -->
-  <circle cx="64" cy="18" r="3" fill="#D4A857" opacity=".65"/>
-  <circle cx="68" cy="14" r="1.8" fill="#D4A857" opacity=".42"/>
-  <circle cx="60" cy="13" r="1.4" fill="#D4A857" opacity=".35"/>
-</svg>`;
-
-const SVG_CORNER = `<svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- linhas de moldura -->
-  <path d="M4 106 L4 14 Q4 4 14 4 L106 4" stroke="#D4A857" stroke-width="1" fill="none" opacity=".35"/>
-  <path d="M4 106 L4 26 Q4 14 16 14 L106 14" stroke="#D4A857" stroke-width=".5" fill="none" opacity=".20"/>
-  <!-- ornamento floral no canto -->
-  <path d="M4 40 C14 32 24 26 18 14" stroke="#D4A857" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".55"/>
-  <path d="M4 40 C2 30 6 22 18 14" stroke="#D4A857" stroke-width=".7" fill="none" stroke-linecap="round" opacity=".35"/>
-  <!-- folhas do canto -->
-  <path d="M12 28 C6 22 4 14 12 10 C18 16 16 26 12 28Z" fill="#D4A857" opacity=".40"/>
-  <path d="M18 14 C14 8 16 2 22 4 C24 10 20 14 18 14Z" fill="#D4A857" opacity=".35"/>
-  <!-- ponto decorativo -->
-  <circle cx="4" cy="4" r="2.5" fill="#D4A857" opacity=".50"/>
-  <circle cx="4" cy="106" r="2" fill="#D4A857" opacity=".35"/>
-  <circle cx="106" cy="4" r="2" fill="#D4A857" opacity=".35"/>
+  <path d="M8 134 C10 112 22 94 30 76 C38 58 52 40 64 18" stroke="#C9A961" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  <path d="M8 134 C14 128 22 122 16 116" stroke="#C9A961" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".22"/>
+  <path d="M20 110 C8 100 2 86 16 80 C26 88 28 104 20 110Z" fill="#C9A961" opacity=".18"/>
+  <path d="M20 110 C16 100 14 90 16 80" stroke="#C9A961" stroke-width=".7" fill="none" opacity=".14"/>
+  <path d="M32 86 C20 78 16 64 30 58 C40 66 40 80 32 86Z" fill="#C9A961" opacity=".16"/>
+  <path d="M32 86 C28 76 26 66 30 58" stroke="#C9A961" stroke-width=".7" fill="none" opacity=".12"/>
+  <path d="M46 60 C38 50 36 38 50 34 C58 42 56 56 46 60Z" fill="#C9A961" opacity=".14"/>
+  <path d="M57 38 C52 30 54 22 62 20 C66 28 62 36 57 38Z" fill="#C9A961" opacity=".12"/>
+  <path d="M40 72 C46 68 54 70 58 62" stroke="#C9A961" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".18"/>
+  <path d="M58 62 C62 56 60 50 64 46" stroke="#C9A961" stroke-width=".8" fill="none" stroke-linecap="round" opacity=".14"/>
+  <circle cx="64" cy="18" r="3" fill="#C9A961" opacity=".22"/>
+  <circle cx="68" cy="14" r="1.8" fill="#C9A961" opacity=".15"/>
+  <circle cx="60" cy="13" r="1.4" fill="#C9A961" opacity=".12"/>
 </svg>`;
 
 const SVG_MOLDURA = `<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- ramo esquerdo -->
-  <path d="M112 56 C98 44 78 30 58 18 C42 10 22 6 6 4" stroke="#D4A857" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <!-- ramo direito (espelho) -->
-  <path d="M128 56 C142 44 162 30 182 18 C198 10 218 6 234 4" stroke="#D4A857" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <!-- folhas esquerda -->
-  <path d="M74 22 C66 14 60 8 72 4 C80 10 78 20 74 22Z" fill="#D4A857" opacity=".42"/>
-  <path d="M52 14 C44 8 40 2 50 0 C56 6 54 12 52 14Z" fill="#D4A857" opacity=".35"/>
-  <!-- folhas direita -->
-  <path d="M166 22 C174 14 180 8 168 4 C160 10 162 20 166 22Z" fill="#D4A857" opacity=".42"/>
-  <path d="M188 14 C196 8 200 2 190 0 C184 6 186 12 188 14Z" fill="#D4A857" opacity=".35"/>
-  <!-- centro -->
-  <circle cx="120" cy="58" r="3" fill="#D4A857" opacity=".55"/>
-  <path d="M108 58 L120 50 L132 58" stroke="#D4A857" stroke-width=".8" fill="none" opacity=".40"/>
-  <!-- pontos extremos -->
-  <circle cx="6"  cy="4" r="2.2" fill="#D4A857" opacity=".50"/>
-  <circle cx="234" cy="4" r="2.2" fill="#D4A857" opacity=".50"/>
+  <path d="M112 56 C98 44 78 30 58 18 C42 10 22 6 6 4" stroke="#C9A961" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M128 56 C142 44 162 30 182 18 C198 10 218 6 234 4" stroke="#C9A961" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M74 22 C66 14 60 8 72 4 C80 10 78 20 74 22Z" fill="#C9A961" opacity=".16"/>
+  <path d="M52 14 C44 8 40 2 50 0 C56 6 54 12 52 14Z" fill="#C9A961" opacity=".13"/>
+  <path d="M166 22 C174 14 180 8 168 4 C160 10 162 20 166 22Z" fill="#C9A961" opacity=".16"/>
+  <path d="M188 14 C196 8 200 2 190 0 C184 6 186 12 188 14Z" fill="#C9A961" opacity=".13"/>
+  <circle cx="120" cy="58" r="3" fill="#C9A961" opacity=".20"/>
+  <path d="M108 58 L120 50 L132 58" stroke="#C9A961" stroke-width=".8" fill="none" opacity=".15"/>
+  <circle cx="6"  cy="4" r="2.2" fill="#C9A961" opacity=".18"/>
+  <circle cx="234" cy="4" r="2.2" fill="#C9A961" opacity=".18"/>
 </svg>`;
 
 const SVG_WREATH = `<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- arco superior esquerdo -->
-  <path d="M90 20 C56 20 28 48 28 82" stroke="#D4A857" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".55"/>
-  <!-- arco superior direito -->
-  <path d="M90 20 C124 20 152 48 152 82" stroke="#D4A857" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".55"/>
-  <!-- folhas arco esq -->
-  <path d="M38 50 C30 44 26 36 36 32 C42 38 40 48 38 50Z" fill="#D4A857" opacity=".38"/>
-  <path d="M30 66 C22 62 20 54 30 50 C36 56 34 64 30 66Z" fill="#D4A857" opacity=".34"/>
-  <!-- folhas arco dir -->
-  <path d="M142 50 C150 44 154 36 144 32 C138 38 140 48 142 50Z" fill="#D4A857" opacity=".38"/>
-  <path d="M150 66 C158 62 160 54 150 50 C144 56 146 64 150 66Z" fill="#D4A857" opacity=".34"/>
-  <!-- flores topo esq/dir -->
-  <circle cx="62" cy="26" r="4" fill="none" stroke="#D4A857" stroke-width=".9" opacity=".40"/>
-  <circle cx="62" cy="26" r="1.8" fill="#D4A857" opacity=".45"/>
-  <circle cx="118" cy="26" r="4" fill="none" stroke="#D4A857" stroke-width=".9" opacity=".40"/>
-  <circle cx="118" cy="26" r="1.8" fill="#D4A857" opacity=".45"/>
-  <!-- pontos de flor ao longo do arco -->
-  <circle cx="42"  cy="38" r="2" fill="#D4A857" opacity=".35"/>
-  <circle cx="32"  cy="56" r="2" fill="#D4A857" opacity=".30"/>
-  <circle cx="138" cy="38" r="2" fill="#D4A857" opacity=".35"/>
-  <circle cx="148" cy="56" r="2" fill="#D4A857" opacity=".30"/>
-  <!-- topo: broto central -->
-  <circle cx="90" cy="14" r="3.5" fill="none" stroke="#D4A857" stroke-width="1" opacity=".50"/>
-  <circle cx="90" cy="14" r="1.6" fill="#D4A857" opacity=".60"/>
-  <path d="M86 18 L84 24" stroke="#D4A857" stroke-width=".8" opacity=".35"/>
-  <path d="M94 18 L96 24" stroke="#D4A857" stroke-width=".8" opacity=".35"/>
+  <path d="M90 20 C56 20 28 48 28 82" stroke="#C9A961" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".40"/>
+  <path d="M90 20 C124 20 152 48 152 82" stroke="#C9A961" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".40"/>
+  <path d="M38 50 C30 44 26 36 36 32 C42 38 40 48 38 50Z" fill="#C9A961" opacity=".15"/>
+  <path d="M30 66 C22 62 20 54 30 50 C36 56 34 64 30 66Z" fill="#C9A961" opacity=".13"/>
+  <path d="M142 50 C150 44 154 36 144 32 C138 38 140 48 142 50Z" fill="#C9A961" opacity=".15"/>
+  <path d="M150 66 C158 62 160 54 150 50 C144 56 146 64 150 66Z" fill="#C9A961" opacity=".13"/>
+  <circle cx="62" cy="26" r="4" fill="none" stroke="#C9A961" stroke-width=".9" opacity=".18"/>
+  <circle cx="62" cy="26" r="1.8" fill="#C9A961" opacity=".20"/>
+  <circle cx="118" cy="26" r="4" fill="none" stroke="#C9A961" stroke-width=".9" opacity=".18"/>
+  <circle cx="118" cy="26" r="1.8" fill="#C9A961" opacity=".20"/>
+  <circle cx="42"  cy="38" r="2" fill="#C9A961" opacity=".13"/>
+  <circle cx="32"  cy="56" r="2" fill="#C9A961" opacity=".11"/>
+  <circle cx="138" cy="38" r="2" fill="#C9A961" opacity=".13"/>
+  <circle cx="148" cy="56" r="2" fill="#C9A961" opacity=".11"/>
+  <circle cx="90" cy="14" r="3.5" fill="none" stroke="#C9A961" stroke-width="1" opacity=".22"/>
+  <circle cx="90" cy="14" r="1.6" fill="#C9A961" opacity=".28"/>
+  <path d="M86 18 L84 24" stroke="#C9A961" stroke-width=".8" opacity=".14"/>
+  <path d="M94 18 L96 24" stroke="#C9A961" stroke-width=".8" opacity=".14"/>
 </svg>`;
 
 const SVG_DIVIDER = `<svg width="320" height="22" viewBox="0 0 320 22" fill="none" xmlns="http://www.w3.org/2000/svg">
   <line x1="0" y1="11" x2="140" y2="11" stroke="url(#gl)" stroke-width=".8"/>
   <line x1="180" y1="11" x2="320" y2="11" stroke="url(#gr)" stroke-width=".8"/>
-  <!-- losango central -->
-  <path d="M152 11 L160 4 L168 11 L160 18Z" fill="#D4A857" opacity=".55"/>
-  <!-- pontos flanqueando -->
-  <circle cx="144" cy="11" r="1.8" fill="#D4A857" opacity=".40"/>
-  <circle cx="176" cy="11" r="1.8" fill="#D4A857" opacity=".40"/>
+  <path d="M152 11 L160 4 L168 11 L160 18Z" fill="#C9A961" opacity=".40"/>
+  <circle cx="144" cy="11" r="1.8" fill="#C9A961" opacity=".28"/>
+  <circle cx="176" cy="11" r="1.8" fill="#C9A961" opacity=".28"/>
   <defs>
     <linearGradient id="gl" x1="0" y1="0" x2="140" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#D4A857" stop-opacity="0"/>
-      <stop offset="1" stop-color="#D4A857" stop-opacity=".50"/>
+      <stop offset="0" stop-color="#C9A961" stop-opacity="0"/>
+      <stop offset="1" stop-color="#C9A961" stop-opacity=".38"/>
     </linearGradient>
     <linearGradient id="gr" x1="180" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#D4A857" stop-opacity=".50"/>
-      <stop offset="1" stop-color="#D4A857" stop-opacity="0"/>
+      <stop offset="0" stop-color="#C9A961" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#C9A961" stop-opacity="0"/>
     </linearGradient>
   </defs>
 </svg>`;
 
 // ══════════════════════════════════════════════════════════════════════════════
-// DADOS DOS SLIDES
-// bg       = foto de fundo (string)
-// video    = vídeo Veo de fundo (string) — substitui bg
-// pos      = background-position (default: 'center center')
-// bgClass  = classe de animação/filtro (kb, kb-face, kb-hands, grayscale, blur-heavy, dark-veil)
-// overlay  = tipo de overlay ('soft','med','hard','bot','top','full','scene')
-// content  = HTML de texto/ornamentos
-// orn*     = ornamentos de canto
+// DADOS DOS SLIDES — v04 (NARRATIVA-V04.md)
 // ══════════════════════════════════════════════════════════════════════════════
 const A = 'assets/';
 const V = 'revividas/';
@@ -464,7 +417,7 @@ const SLIDES = [
 
   // ─── ATO I · A ORIGEM (0–47s) ───────────────────────────────────────────
 
-  // 0: Abertura preta + título do ato (0–3s)
+  // Slide 0: Abertura preta · card do ato (0–3s)
   { start:0, end:3,
     content:`
       <div class="tl">
@@ -472,23 +425,19 @@ const SLIDES = [
         <p class="t-chapter-title appear-2">A &nbsp; O r i g e m</p>
       </div>` },
 
-  // 1: Casamento P&B + N1 (3–10s)
+  // Slide 1: Casamento P&B · silêncio visual (3–10s)
   { start:3, end:10,
     bg: A+'casamento-marlene-pai.jpg', pos:'center 28%',
     bgClass:'grayscale', overlay:'bot',
-    content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-narrativa"><em>"Antes de tudo, havia ela."</em></p>
-      </div>`,
     ornBL:true },
 
-  // 2: Casamento Veo KB (10–22s)
+  // Slide 2: Casamento Veo P&B (10–22s)
   { start:10, end:22,
     video: V+'v01_casamento.mp4',
     videoClass:'grayscale',
     overlay:'full' },
 
-  // 3: MARLENE (22–28s)
+  // Slide 3: MARLENE (22–28s)
   { start:22, end:28,
     content:`
       <div class="tl" style="gap:0">
@@ -496,22 +445,25 @@ const SLIDES = [
         <span class="gold-line" style="width:180px"></span>
       </div>` },
 
-  // 4: Sobrenome (28–34s)
+  // Slide 4: Sobrenome (28–34s)
   { start:28, end:34,
     content:`
       <div class="tl" style="gap:8px">
         <p class="t-sobrenome appear">Rodrigues da Conceição</p>
       </div>` },
 
-  // 5: Datas + moldura (34–42s)
+  // Slide 5: Datas + moldura + Ec 3:2 (34–42s)
   { start:34, end:42,
     content:`
       <div class="tl" style="gap:12px">
         <div class="appear-slow" style="text-align:center">${SVG_MOLDURA}</div>
-        <p class="t-dates appear-2" style="margin-top:8px">20 de outubro de 1955 &nbsp;–&nbsp; 22 de junho de 2025</p>
+        <p class="t-dates appear-2" style="margin-top:6px">20 de outubro de 1955 &nbsp;–&nbsp; 22 de junho de 2025</p>
+        <div style="height:14px"></div>
+        <p class="t-biblical appear-3" style="font-size:clamp(12px,1.5vw,22px);text-align:center">Há tempo para nascer e tempo para morrer.</p>
+        <span class="t-ref appear-4" style="text-align:center">Eclesiastes 3:2</span>
       </div>` },
 
-  // 6: Dissolve / capítulo Ato II (42–47s)
+  // Slide 6: Card ATO II (42–47s)
   { start:42, end:47,
     content:`
       <div class="tl">
@@ -521,212 +473,196 @@ const SLIDES = [
 
   // ─── ATO II · QUEM ELA FOI (47–141s) ────────────────────────────────────
 
-  // 7: Casamento colorido + Agostinho (47–62s)
+  // Slide 7: Casamento colorido · Pv 31:20 (47–62s)
   { start:47, end:62,
     bg: A+'casamento-marlene-pai.jpg', pos:'center 28%',
     bgClass:'kb', overlay:'bot',
     content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-quote"><em>"…com o seu coração<br>para que eu nascesse à luz da eternidade."</em></p>
-        <p class="t-attribution appear-3">— Santo Agostinho</p>
+      <div class="tl-bot-left appear-2">
+        <p class="t-biblical">Estende a mão ao pobre<br>e acolhe o necessitado.</p>
+        <span class="t-ref appear-3">Provérbios 31:20</span>
       </div>`,
     ornBR:true },
 
-  // 8: 2013 família + N2 (62–72s)
+  // Slide 8: 2013 família · silêncio (62–72s)
   { start:62, end:72,
     bg: A+'20130907_205255.jpg', pos:'center 30%',
-    bgClass:'kb-left', overlay:'bot',
-    content:`
-      <div class="tl-bot appear-2">
-        <p class="t-narrativa"><em>"Cuidou sem pedir palco."</em></p>
-      </div>` },
+    bgClass:'kb-left', overlay:'bot' },
 
-  // 9: 2013 grupo KB (72–82s)
+  // Slide 9: 2013 grupo · silêncio (72–82s)
   { start:72, end:82,
     bg: A+'20130907_205356.jpg', pos:'center 35%',
-    bgClass:'kb-right', overlay:'full',
-    ornBL:true },
+    bgClass:'kb-right', overlay:'full' },
 
-  // 10: 2015 chapéu e óculos (82–90s) — retrato, rosto no terço superior
+  // Slide 10: chapéu e óculos · silêncio (82–90s)
   { start:82, end:90,
     bg: A+'IMG-20180524-WA0000.jpg', pos:'center 18%',
     bgClass:'kb', overlay:'full' },
 
-  // 11: 2016 evento outubro (90–100s)
+  // Slide 11: evento 2016 · silêncio (90–100s)
   { start:90, end:100,
     bg: A+'IMG-20161022-WA0009.jpg', pos:'center 32%',
-    bgClass:'kb-left', overlay:'full',
-    ornBR:true },
+    bgClass:'kb-left', overlay:'full' },
 
-  // 12: 2016 Casados para Sempre + N3 + Cora (100–110s)
+  // Slide 12: Casados para Sempre · 2 Tm 1:5 (100–110s)
   { start:100, end:110,
     bg: A+'IMG-20181224-WA0008.jpg', pos:'center 30%',
     bgClass:'kb', overlay:'scene',
     content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-narrativa"><em>"Seus braços eram o endereço de casa."</em></p>
-        <div style="height:10px"></div>
-        <p class="t-quote appear-3"><em>"Nas palmas de tuas mãos<br>leio as linhas da minha vida."</em></p>
-        <p class="t-attribution appear-4">— Cora Coralina</p>
+      <div class="tl-bot-left appear-2">
+        <p class="t-biblical">A fé sincera que primeiro<br>viveu em sua mãe — e vive em você.</p>
+        <span class="t-ref appear-3">2 Timóteo 1:5</span>
       </div>`,
-    ornBL:true },
+    ornBR:true },
 
-  // 13: casal no parque (110–120s)
+  // Slide 13: casal no parque · [R] aguarda letra (110–120s)
   { start:110, end:120,
     bg: A+'IMG-20180402-WA0012.jpg', pos:'center 30%',
     bgClass:'kb-right', overlay:'full' },
 
-  // 14: Natal 2018 (120–130s)
+  // Slide 14: Natal 2018 · [R] aguarda letra (120–130s)
   { start:120, end:130,
     bg: A+'20181201_105825.jpg', pos:'center 32%',
-    bgClass:'kb', overlay:'full',
-    ornBR:true },
+    bgClass:'kb', overlay:'full' },
 
-  // 15: 2019/2020 + Pv 31:25 (130–141s)
+  // Slide 15: 2019/2020 · Pv 31:25 NVI (130–141s)
   { start:130, end:141,
     bg: A+'IMG-20190120-WA0015.jpg', pos:'center 28%',
     bgClass:'kb-left', overlay:'bot',
     content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-quote"><em>"A força e a honra são seu vestido,<br>e se alegrará com o dia futuro."</em></p>
-        <p class="t-attribution appear-3">— Provérbios 31:25</p>
+      <div class="tl-bot-left appear-2">
+        <p class="t-biblical">É revestida de força e dignidade;<br>pode rir do dia vindouro.</p>
+        <span class="t-ref appear-3">Provérbios 31:25</span>
       </div>` },
 
   // ─── ATO III · O QUE ELA DEIXOU (141–251s) ──────────────────────────────
 
-  // 16: Chapéu vermelho Veo (141–155s)
+  // Slide 16: chapéu vermelho Veo · card do ato (141–155s)
   { start:141, end:155,
     video: V+'v03_chapeuvermelho-julia.mp4',
     overlay:'full',
     content:`
-      <div class="tl-bot appear-3">
+      <div class="tl-bot appear-3" style="text-align:center">
         <p class="t-chapter-ato">A T O &nbsp; I I I</p>
         <p class="t-chapter-title">O &nbsp; q u e &nbsp; e l a &nbsp; d e i x o u</p>
       </div>`,
     ornBL:true },
 
-  // 17: Chapéu vermelho KB zoom rosto + N4 (155–168s)
+  // Slide 17: chapéu vermelho Veo · silêncio (155–168s)
   { start:155, end:168,
     video: V+'v03_chapeuvermelho-julia.mp4',
-    overlay:'bot',
-    content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-narrativa"><em>"O amor dela não teve dia marcado."</em></p>
-      </div>` },
+    overlay:'bot' },
 
-  // 18: Aniversário Davi Veo (168–180s)
+  // Slide 18: aniversário Davi Veo · [R] aguarda letra (168–180s)
   { start:168, end:180,
     video: V+'v04_aniversario-davi.mp4',
-    overlay:'full',
-    ornBR:true },
+    overlay:'full' },
 
-  // 19: Família reunida + Clarice (180–192s)
+  // Slide 19: família reunida · silêncio (180–192s)
   { start:180, end:192,
     bg: A+'IMG_20250201_171115049_HDR.jpg', pos:'center 30%',
-    bgClass:'kb', overlay:'scene',
-    content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-quote"><em>"Pensei — mamãe —<br>e então não ouvi mais nada."</em></p>
-        <p class="t-attribution appear-3">— Clarice Lispector</p>
-      </div>` },
+    bgClass:'kb', overlay:'full' },
 
-  // 20: Família jul/2020 (192–202s)
+  // Slide 20: família jul/2020 · silêncio (192–202s)
   { start:192, end:202,
     bg: A+'IMG-20200726-WA0018.jpg', pos:'center 32%',
-    bgClass:'kb-right', overlay:'full',
-    ornBL:true },
+    bgClass:'kb-right', overlay:'full' },
 
-  // 21: CLÍMAX fade lento + N5 Veo (202–215s)
+  // Slide 21: CLÍMAX Veo Marlene+Davi+bolo · 1 Co 15:55 (202–215s)
   { start:202, end:215,
     video: V+'v02_marlene-davi-bolo.mp4',
     overlay:'bot',
     content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-narrativa"><em>"Com ela, até o bolo virava cerimônia."</em></p>
+      <div class="tl-bot appear-2" style="text-align:center">
+        <p class="t-biblical" style="font-size:clamp(16px,2.2vw,34px)">Onde está, ó morte, a tua vitória?</p>
+        <span class="t-ref appear-3">1 Coríntios 15:55</span>
       </div>`,
-    ornBR:true },
+    ornBL:true },
 
-  // 22: Clímax KB mãos (215–228s)
+  // Slide 22: clímax zoom mãos Veo · silêncio (215–228s)
   { start:215, end:228,
     video: V+'v02_marlene-davi-bolo.mp4',
     overlay:'full' },
 
-  // 23: 2025b + Clarice 2 (228–238s)
+  // Slide 23: 2025b · silêncio (228–238s)
   { start:228, end:238,
     bg: A+'IMG_20250201_172115623_HDR.jpg', pos:'center 30%',
-    bgClass:'kb', overlay:'scene',
-    content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-quote"><em>"A gente não cria os filhos para a gente."</em></p>
-        <p class="t-attribution appear-3">— Clarice Lispector</p>
-      </div>`,
-    ornBL:true },
+    bgClass:'kb', overlay:'full' },
 
-  // 24: Fechamento Ato 3 + Santa Monica (238–251s)
+  // Slide 24: fechamento Ato III · Pv 31:30 (238–251s)
   { start:238, end:251,
     bg: A+'IMG_20250201_171118673_HDR.jpg', pos:'center 28%',
-    bgClass:'kb-left', overlay:'scene',
+    bgClass:'kb-left', overlay:'bot',
     content:`
-      <div class="tl-bot glass appear-2">
-        <p class="t-quote"><em>"Nada mais me atrai nesta vida."</em></p>
-        <p class="t-attribution appear-3">— Santa Monica, sec. IV</p>
+      <div class="tl-bot-left appear-2">
+        <p class="t-biblical">A mulher que teme o Senhor<br>será louvada.</p>
+        <span class="t-ref appear-3">Provérbios 31:30</span>
       </div>` },
 
   // ─── ATO IV · DESPEDIDA E LEGADO (251–320s) ─────────────────────────────
 
-  // 25: Chapéu+Julia fade lento + N6 (251–265s)
+  // Slide 25: chapéu+Julia · card ATO IV + Jo 14:2 (251–265s)
   { start:251, end:265,
     bg: A+'IMG_20241027_144232221_HDR_PORTRAIT.jpg', pos:'center 18%',
     bgClass:'kb', overlay:'full',
     content:`
-      <div class="tl-bot appear-2">
+      <div class="tl-bot appear-2" style="text-align:center">
         <p class="t-chapter-ato">A T O &nbsp; I V</p>
         <p class="t-chapter-title">D e s p e d i d a &nbsp; e &nbsp; L e g a d o</p>
-        <div style="height:14px"></div>
-        <p class="t-narrativa appear-3"><em>"Partir nao apaga. Fica a forma dos abracos."</em></p>
+        <div style="height:22px"></div>
+        <p class="t-biblical appear-3" style="font-size:clamp(13px,1.6vw,25px)">Na casa de meu Pai há muitas moradas.</p>
+        <span class="t-ref appear-4">João 14:2</span>
       </div>`,
-    ornBL:true, ornBR:true },
+    ornBR:true },
 
-  // 26: Foto desfocada + frase dela (265–278s)
+  // Slide 26: foto desfocada · frase dela — intocada (265–278s)
   { start:265, end:278,
     bg: A+'IMG_20241027_144232221_HDR_PORTRAIT.jpg', pos:'center 18%',
     bgClass:'blur-heavy',
     overlay:'hard',
     content:`<div class="tl"><p class="t-frase appear">"Vai dar certo, seu fresco!!!"</p></div>` },
 
-  // 27: Escuro + "Honrar a mae" (278–288s)
+  // Slide 27: escuro com foto ao fundo · Êx 20:12 (278–288s)
   { start:278, end:288,
     bg: A+'IMG_20241027_144232221_HDR_PORTRAIT.jpg', pos:'center 18%',
     bgClass:'dark-veil',
     content:`
       <div class="tl">
-        <p class="t-honrar appear" style="max-width:620px">"Honrar a mae e honrar a origem."</p>
-      </div>`,
-    ornBR:true },
+        <p class="t-biblical appear" style="font-size:clamp(18px,2.6vw,42px);text-align:center;max-width:560px">Honra teu pai e tua mãe.</p>
+        <span class="t-ref appear-2" style="text-align:center">Êxodo 20:12</span>
+      </div>` },
 
-  // 28: Dedicatoria + Pv 31:31 (288–295s)
+  // Slide 28: preto · Pv 31:28 + dedicatória (288–295s)
   { start:288, end:295,
     content:`
       <div class="tl" style="gap:10px">
         <div class="appear-slow">${SVG_DIVIDER}</div>
-        <p class="t-quote appear" style="text-align:center"><em>"Deixe o seu proprio trabalho<br>louva-la nas portas."</em></p>
-        <p class="t-attribution appear-2">— Proverbios 31:31</p>
-        <div style="height:8px"></div>
+        <p class="t-biblical appear" style="text-align:center;font-size:clamp(13px,1.6vw,26px)">Seus filhos se levantam<br>e a chamam bem-aventurada.</p>
+        <span class="t-ref appear-2" style="text-align:center">Provérbios 31:28</span>
+        <div style="height:10px"></div>
         <p class="t-dedicatoria appear-3">Com amor eterno — Mayko e os seus filhos</p>
       </div>` },
 
-  // 29: In memoriam (295–305s)
+  // Slide 29: preto coroa · In Memoriam + Sl 116:15 ARA (295–305s)
   { start:295, end:305,
     content:`
-      <div class="tl" style="gap:14px">
+      <div class="tl" style="gap:12px">
         <div class="appear-slow">${SVG_WREATH}</div>
         <p class="t-memoriam appear">In memoriam</p>
-        <p class="t-memoriam-name appear-2">Marlene Rodrigues da Conceicao</p>
+        <p class="t-memoriam-name appear-2">Marlene Rodrigues da Conceição</p>
         <p class="t-dates appear-3" style="margin-top:4px">20 out. 1955 &nbsp;—&nbsp; 22 jun. 2025</p>
+        <div style="height:14px"></div>
+        <p class="t-biblical appear-4" style="font-size:clamp(12px,1.4vw,21px);text-align:center">Preciosa é aos olhos do Senhor<br>a morte dos seus santos.</p>
+        <span class="t-ref appear-4" style="text-align:center;margin-top:10px">Salmo 116:15</span>
       </div>` },
 
-  // 30: Preto absoluto (305–320s)
-  { start:305, end:320 },
+  // Slide 30: preto absoluto · Ap 21:4 (305–320s)
+  { start:305, end:320,
+    content:`
+      <div class="tl">
+        <p class="t-biblical appear-slow" style="text-align:center;max-width:480px;font-size:clamp(14px,1.8vw,28px)">Enxugará dos seus olhos toda lágrima.</p>
+        <span class="t-ref appear-4" style="text-align:center;margin-top:18px">Apocalipse 21:4</span>
+      </div>` },
 ];
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -739,20 +675,16 @@ SLIDES.forEach((s, i) => {
   div.className = 'slide';
   div.id = 'sl' + i;
 
-  // Vignette presente em todos os slides com foto/video
   if (s.bg || s.video) {
     div.insertAdjacentHTML('beforeend', '<div class="vignette"></div>');
   }
 
-  // Fundo: vídeo Veo
   if (s.video) {
     const vc = document.createElement('div');
     vc.className = 'bg-video' + (s.videoClass ? ' '+s.videoClass : '');
     vc.innerHTML = `<video autoplay muted loop playsinline><source src="${s.video}" type="video/mp4"></video>`;
     div.insertBefore(vc, div.firstChild);
-  }
-  // Fundo: foto estática
-  else if (s.bg) {
+  } else if (s.bg) {
     const bg = document.createElement('div');
     bg.className = 'bg ' + (s.bgClass || '');
     bg.style.backgroundImage = `url('${s.bg}')`;
@@ -760,31 +692,26 @@ SLIDES.forEach((s, i) => {
     div.insertBefore(bg, div.firstChild);
   }
 
-  // Overlay
   if (s.overlay) {
     div.insertAdjacentHTML('beforeend', `<div class="ov-${s.overlay}"></div>`);
   }
 
-  // Conteúdo HTML
   if (s.content) {
     div.insertAdjacentHTML('beforeend', s.content);
   }
 
-  // Ornamentos de canto
   if (s.ornBL) div.insertAdjacentHTML('beforeend', `<div class="orn orn-bl">${SVG_RAMO}</div>`);
   if (s.ornBR) div.insertAdjacentHTML('beforeend', `<div class="orn orn-br">${SVG_RAMO}</div>`);
-  if (s.ornTL) div.insertAdjacentHTML('beforeend', `<div class="orn orn-tl">${SVG_CORNER}</div>`);
-  if (s.ornTR) div.insertAdjacentHTML('beforeend', `<div class="orn orn-tr">${SVG_CORNER}</div>`);
   if (s.ornT)  div.insertAdjacentHTML('beforeend', `<div class="orn orn-tc">${SVG_MOLDURA}</div>`);
 
   stage.appendChild(div);
 });
 
 // ══════════════════════════════════════════════════════════════════════════════
-// MARCADORES DE CAPÍTULO NA BARRA DE PROGRESSO
+// MARCADORES DE CAPÍTULO
 // ══════════════════════════════════════════════════════════════════════════════
 const DURATION = 320;
-const CHAPTER_TIMES = [0, 47, 141, 251]; // início dos 4 atos
+const CHAPTER_TIMES = [0, 47, 141, 251];
 const barTrack = document.getElementById('bar-track');
 CHAPTER_TIMES.forEach(t => {
   const dot = document.createElement('div');
@@ -810,7 +737,6 @@ function restartKB(el) {
 
 function tick() {
   const t = audio.currentTime;
-
   barEl.style.width = Math.min(100, (t / DURATION) * 100) + '%';
 
   let target = -1;
@@ -822,14 +748,12 @@ function tick() {
     if (activeIdx >= 0) {
       const prev = document.getElementById('sl' + activeIdx);
       prev.classList.remove('active', 'running');
-      // pausa vídeos do slide anterior
       prev.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
     }
     if (target >= 0) {
       const cur = document.getElementById('sl' + target);
       restartKB(cur);
       cur.classList.add('active');
-      // retoma vídeos do slide atual
       cur.querySelectorAll('video').forEach(v => v.play().catch(()=>{}));
       setTimeout(() => cur.classList.add('running'), 420);
     }
@@ -848,7 +772,6 @@ audio.addEventListener('canplaythrough', () => {
   setTimeout(() => loader.style.display = 'none', 1600);
 }, { once: true });
 
-// fallback: remove loader após 4s mesmo sem canplaythrough
 setTimeout(() => {
   const loader = document.getElementById('loader');
   if (loader) { loader.classList.add('hide'); setTimeout(() => loader.style.display='none', 1600); }
@@ -864,20 +787,15 @@ function iniciar() {
 
 function assistirVideo() {
   const startEl = document.getElementById('start');
-  const player  = document.getElementById('video-player');
-  const vid     = document.getElementById('vid');
   startEl.classList.add('hide');
   setTimeout(() => startEl.style.display = 'none', 2600);
-  player.style.display = 'flex';
-  vid.play().catch(() => {});
+  document.getElementById('video-player').style.display = 'flex';
+  document.getElementById('vid').play().catch(() => {});
 }
 
 function fecharVideo() {
-  const player = document.getElementById('video-player');
-  const vid    = document.getElementById('vid');
-  vid.pause();
-  player.style.display = 'none';
-  // volta à tela de início
+  document.getElementById('vid').pause();
+  document.getElementById('video-player').style.display = 'none';
   const startEl = document.getElementById('start');
   startEl.style.display = 'flex';
   startEl.classList.remove('hide');
@@ -891,7 +809,6 @@ document.addEventListener('keydown', e => {
   if (e.key === 'f' || e.key === 'F') {
     !document.fullscreenElement ? document.documentElement.requestFullscreen() : document.exitFullscreen();
   }
-  // Pular para o início de cada ato: 1–4
   if (e.key === '1') audio.currentTime = 0;
   if (e.key === '2') audio.currentTime = 47;
   if (e.key === '3') audio.currentTime = 141;

@@ -1,0 +1,23 @@
+# Fotos e vídeos pessoais — não publicar
+assets/
+revividas/
+
+# Música com direitos autorais
+musica.mp3
+*.mp3
+
+# Renders e segmentos de vídeo (arquivos grandes)
+*.mp4
+montagem/temp/
+montagem/temp_1080/
+montagem/temp_short/
+montagem/temp_short_1080/
+montagem/temp_stories/
+
+# Fonte Windows (não redistribuível)
+montagem/Georgia.ttf
+
+# Sistema
+Thumbs.db
+.DS_Store
+desktop.ini

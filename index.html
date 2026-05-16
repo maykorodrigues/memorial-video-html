@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Memorial Video HTML — Template Cinematográfico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#0a0a0a;color:#F5F0E6;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:18px;line-height:1.75;
+}
+
+/* ── Hero ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:60px 24px;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(212,168,87,.06) 0%,transparent 70%);
+  border-bottom:1px solid rgba(212,168,87,.12);
+}
+.hero-label{
+  font-family:'Cinzel',serif;font-size:11px;font-weight:400;
+  color:rgba(212,168,87,.6);letter-spacing:.38em;text-transform:uppercase;
+  margin-bottom:28px;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,7vw,90px);font-weight:600;font-style:italic;
+  color:#F5F0E6;letter-spacing:.08em;line-height:1.1;
+  text-shadow:0 2px 40px rgba(212,168,87,.15);
+  margin-bottom:20px;
+}
+.hero-divider{
+  width:120px;height:1px;
+  background:linear-gradient(90deg,transparent,#D4A857,transparent);
+  margin:0 auto 28px;opacity:.5;
+}
+.hero-sub{
+  font-size:clamp(16px,2vw,22px);font-weight:300;font-style:italic;
+  color:rgba(245,240,230,.65);max-width:560px;margin:0 auto 48px;
+}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn{
+  display:inline-block;padding:13px 32px;border-radius:2px;
+  font-family:'Cinzel',serif;font-size:11px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;text-decoration:none;
+  transition:all .3s ease;
+}
+.btn-gold{
+  background:rgba(212,168,87,.12);color:#D4A857;
+  border:1px solid rgba(212,168,87,.35);
+}
+.btn-gold:hover{background:rgba(212,168,87,.22);border-color:#D4A857}
+.btn-ghost{
+  background:transparent;color:rgba(245,240,230,.5);
+  border:1px solid rgba(245,240,230,.18);
+}
+.btn-ghost:hover{color:#F5F0E6;border-color:rgba(245,240,230,.4)}
+
+/* ── Recursos ── */
+.section{max-width:900px;margin:0 auto;padding:80px 24px}
+.section h2{
+  font-family:'Cinzel',serif;font-size:13px;font-weight:600;
+  color:rgba(212,168,87,.65);letter-spacing:.28em;text-transform:uppercase;
+  margin-bottom:48px;text-align:center;
+}
+.features{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;
+}
+.feat{
+  padding:28px 24px;border:1px solid rgba(212,168,87,.12);border-radius:3px;
+  background:rgba(212,168,87,.025);
+}
+.feat-icon{font-size:28px;margin-bottom:14px}
+.feat h3{
+  font-family:'Cinzel',serif;font-size:11px;font-weight:600;
+  color:#D4A857;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.feat p{font-size:16px;font-weight:300;color:rgba(245,240,230,.65);line-height:1.7}
+
+/* ── Atos ── */
+.atos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0}
+.ato{
+  padding:32px 24px;border:1px solid rgba(212,168,87,.1);
+  text-align:center;
+}
+.ato-num{
+  font-family:'Cinzel',serif;font-size:10px;color:rgba(212,168,87,.5);
+  letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px;
+}
+.ato-name{
+  font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;
+  color:#F5F0E6;margin-bottom:8px;
+}
+.ato-desc{font-size:14px;font-weight:300;color:rgba(245,240,230,.5)}
+
+/* ── Como usar ── */
+.steps{display:flex;flex-direction:column;gap:0}
+.step{
+  display:flex;gap:28px;padding:28px 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.step:last-child{border-bottom:none}
+.step-num{
+  font-family:'Cinzel',serif;font-size:32px;font-weight:600;
+  color:rgba(212,168,87,.2);flex-shrink:0;width:48px;text-align:right;line-height:1;
+  padding-top:4px;
+}
+.step h3{
+  font-family:'Cinzel',serif;font-size:11px;font-weight:600;
+  color:#D4A857;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.step p{font-size:16px;font-weight:300;color:rgba(245,240,230,.65)}
+code{
+  font-family:monospace;font-size:13px;
+  background:rgba(212,168,87,.1);color:#D4A857;
+  padding:2px 7px;border-radius:2px;
+}
+
+/* ── Footer ── */
+footer{
+  border-top:1px solid rgba(212,168,87,.12);
+  padding:40px 24px;text-align:center;
+}
+footer p{font-size:14px;font-weight:300;color:rgba(245,240,230,.3)}
+footer a{color:rgba(212,168,87,.5);text-decoration:none}
+footer a:hover{color:#D4A857}
+
+/* ── Separador dourado ── */
+.gold-sep{
+  width:60px;height:1px;
+  background:linear-gradient(90deg,transparent,#D4A857,transparent);
+  margin:0 auto 60px;opacity:.4;
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <p class="hero-label">Template Open Source</p>
+  <h1>Memorial<br>Video HTML</h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Apresentação cinematográfica para homenagens — slides sincronizados à música, Ken Burns, vídeos de IA e ornamentos botânicos em SVG.</p>
+  <div class="hero-btns">
+    <a href="https://github.com/maykorodrigues/memorial-video-html" class="btn btn-gold" target="_blank">Ver no GitHub</a>
+    <a href="https://github.com/maykorodrigues/memorial-video-html/archive/refs/heads/master.zip" class="btn btn-ghost" target="_blank">Download ZIP</a>
+  </div>
+</section>
+
+<!-- Recursos -->
+<section class="section">
+  <h2>Recursos</h2>
+  <div class="features">
+    <div class="feat">
+      <div class="feat-icon">🎬</div>
+      <h3>Slides sincronizados</h3>
+      <p>Cada slide entra e sai no segundo exato da música, controlado por <code>audio.currentTime</code>.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📸</div>
+      <h3>Ken Burns preciso</h3>
+      <p>Zoom lento nas fotos com <code>background-position</code> por slide — rostos nunca cortados.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🎥</div>
+      <h3>Vídeos de IA</h3>
+      <p>Integração com Google Veo 3.1 — micro-vídeos como fundos cinematográficos nos momentos de clímax.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🌿</div>
+      <h3>Ornamentos SVG</h3>
+      <p>Ramos botânicos, molduras, coroa e divisores dourados — todos inline, sem dependências externas.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">✍️</div>
+      <h3>Tipografia elegante</h3>
+      <p>Cormorant Garamond para textos e Cinzel para títulos de ato — hierarquia visual clara.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">⚙️</div>
+      <h3>Zero dependências</h3>
+      <p>HTML, CSS e JavaScript vanilla. Abre direto no navegador, sem servidor ou npm.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-sep"></div>
+
+<!-- 4 Atos -->
+<section class="section" style="padding-top:0">
+  <h2>Estrutura em 4 Atos</h2>
+  <div class="atos">
+    <div class="ato">
+      <p class="ato-num">Ato I</p>
+      <p class="ato-name">A Origem</p>
+      <p class="ato-desc">Abertura, foto jovem, títulos e datas</p>
+    </div>
+    <div class="ato">
+      <p class="ato-num">Ato II</p>
+      <p class="ato-name">Quem ela foi</p>
+      <p class="ato-desc">Fotos cronológicas com citações literárias</p>
+    </div>
+    <div class="ato">
+      <p class="ato-num">Ato III</p>
+      <p class="ato-name">O que ela deixou</p>
+      <p class="ato-desc">Vídeos Veo, clímax emocional, família</p>
+    </div>
+    <div class="ato">
+      <p class="ato-num">Ato IV</p>
+      <p class="ato-name">Despedida e Legado</p>
+      <p class="ato-desc">Frase pessoal, dedicatória, In memoriam</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-sep"></div>
+
+<!-- Como usar -->
+<section class="section" style="padding-top:0">
+  <h2>Como Usar</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Baixar o template</h3>
+        <p>Clone o repositório ou baixe o ZIP. Copie suas fotos para <code>assets/</code> e a música para <code>musica.mp3</code> na raiz.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Editar o array SLIDES</h3>
+        <p>Abra <code>homenagem.html</code> e edite o array <code>SLIDES</code> com os caminhos das suas fotos, os tempos de cada slide e os textos desejados.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h3>Adicionar vídeos de IA (opcional)</h3>
+        <p>Gere micro-vídeos no Google Veo 3.1, salve em <code>revividas/</code> e referencie com o campo <code>video:</code> nos slides de maior impacto.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <h3>Abrir no navegador</h3>
+        <p>Clique em <code>homenagem.html</code> — abre direto. Para gerar um MP4, use os scripts <code>montagem/*.ps1</code> com FFmpeg.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>
+    Criado com amor por <a href="https://github.com/maykorodrigues" target="_blank">Mayko Rodrigues</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/maykorodrigues/memorial-video-html" target="_blank">GitHub</a>
+    &nbsp;·&nbsp;
+    MIT License
+  </p>
+  <p style="margin-top:10px;font-style:italic;color:rgba(245,240,230,.18);font-size:13px">
+    Em memória de Marlene Rodrigues da Conceição · 1955–2025
+  </p>
+</footer>
+
+</body>
+</html>
